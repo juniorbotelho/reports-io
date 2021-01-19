@@ -1,6 +1,17 @@
 import { getConnection } from "@Providers/Firebase"
 
-export function User() {
+// Abstract class
+export abstract class BaseAuthenticate implements IFirebaseUserModel {
+  signup(auth: IFirebaseUser): Promise<firebase.default.auth.UserCredential> {
+    throw new Error("Method not implemented.")
+  }
+
+  signin(auth: IFirebaseUser): Promise<firebase.default.auth.UserCredential> {
+    throw new Error("Method not implemented.")
+  }
+}
+
+export function Authenticate() {
   return <T extends TDecoratorUser>(Constructor: T) => {
     return class extends Constructor {
       /**
