@@ -12,7 +12,7 @@ export abstract class BaseAuthenticate implements IFirebaseUserModel {
 }
 
 export function Authenticate() {
-  return <T extends TDecoratorUser>(Constructor: T) => {
+  return <T extends TDecoratorConstructor>(Constructor: T) => {
     return class extends Constructor {
       /**
        *
