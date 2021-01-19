@@ -50,7 +50,11 @@ export class Firebase {
   public storage = this.firebase.storage
 
   constructor() {
-    this.firebase.initializeApp(this.firebaseConfig)
-    this.firebase.analytics()
+    if (!this.firebase.apps.length) {
+      this.firebase.initializeApp(this.firebaseConfig)
+      this.firebase.analytics()
+    } else {
+      this.firebase.app()
+    }
   }
 }
