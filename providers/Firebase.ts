@@ -16,7 +16,7 @@ export function getConnection() {
   return connection
 }
 
-export function getRepository(Constructor) {
+export function getRepository(Constructor: ObjectConstructor) {
   class Repository extends Constructor {}
 
   // Returns an instance from this

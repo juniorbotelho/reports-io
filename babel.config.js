@@ -11,13 +11,16 @@ module.exports = {
         '@Components': './src/components',
         '@Themes': './src/themes',
         '@Hooks': './src/hooks',
+        '@Providers': './providers',
         '@Style:Pages': './src/styles/pages',
         '@Style:Components': './src/styles/components',
         '@Hook:Themes': './src/hooks/themes',
         '@Hook:Components': './src/hooks/components',
         '@App:Api': './app/api',
         '@App:Controllers': './app/controllers',
-        '@App:Models': './app/models'
+        '@App:Models': './app/models',
+        '@Provider:Errors': './providers/errors',
+        '@Provider:Middlwares': './providers/middlewares'
       }
     }],
     "inline-react-svg"
