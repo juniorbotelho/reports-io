@@ -9,15 +9,10 @@ import Document, {
   NextScript
 } from "next/document"
 
-import { createConnection } from "@Providers/Firebase"
-
 export default class MyDocument extends Document {
   static async getInitialProps(
     ctx: DocumentContext
   ): Promise<DocumentInitialProps> {
-    createConnection() // Firebase
-
-    // Front-End
     const sheet = new ServerStyleSheet()
     const originalRenderPage = ctx.renderPage
 
