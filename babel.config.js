@@ -1,7 +1,12 @@
 module.exports = {
   presets: ["next/babel"],
   plugins: [
-    ["styled-components", { "ssr": true }],
+    ["@babel/plugin-proposal-decorators", {
+      "legacy": true
+    }],
+    ["styled-components", {
+      "ssr": true
+    }],
     ['module-resolver', {
       alias: {
         '@Events': './src/events',
