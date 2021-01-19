@@ -14,7 +14,10 @@ module.exports = {
         '@Style:Pages': './src/styles/pages',
         '@Style:Components': './src/styles/components',
         '@Hook:Themes': './src/hooks/themes',
-        '@Hook:Components': './src/hooks/components'
+        '@Hook:Components': './src/hooks/components',
+        '@App:Api': './app/api',
+        '@App:Controllers': './app/controllers',
+        '@App:Models': './app/models'
       }
     }],
     "inline-react-svg"
