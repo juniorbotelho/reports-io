@@ -1,4 +1,5 @@
 import React from "react"
+import { ServerStyleSheet } from "styled-components"
 import Document, {
   DocumentInitialProps,
   DocumentContext,
@@ -7,12 +8,16 @@ import Document, {
   Main,
   NextScript
 } from "next/document"
-import { ServerStyleSheet } from "styled-components"
+
+import { createConnection } from "@Providers/Firebase"
 
 export default class MyDocument extends Document {
   static async getInitialProps(
     ctx: DocumentContext
   ): Promise<DocumentInitialProps> {
+    createConnection() // Firebase
+
+    // Front-End
     const sheet = new ServerStyleSheet()
     const originalRenderPage = ctx.renderPage
 
