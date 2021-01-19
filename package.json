@@ -14,6 +14,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "firebase": "^8.2.3",
     "next": "10.0.5",
     "next-images": "^1.6.2",
     "react": "16.13.1",
