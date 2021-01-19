@@ -35,9 +35,11 @@
       "@App:Controllers/*": ["./app/controllers/*"],
       "@App:Models/*": ["./app/models/*"],
       "@Provider:Errors/*": ["./providers/errors/*"],
-      "@Provider:Middlewares/*": ["./providers/middlewares/*"]
-
-    }
+      "@Provider:Middlewares/*": ["./providers/middlewares/*"],
+      "@Provider:Functions/*": ["./providers/functions/*"]
+    },
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
   },
   "include": [
     "next-env.d.ts",

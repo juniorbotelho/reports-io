@@ -20,7 +20,8 @@ module.exports = {
         '@App:Controllers': './app/controllers',
         '@App:Models': './app/models',
         '@Provider:Errors': './providers/errors',
-        '@Provider:Middlwares': './providers/middlewares'
+        '@Provider:Middlwares': './providers/middlewares',
+        '@Provider:Functions': './providers/functions'
       }
     }],
     "inline-react-svg"
