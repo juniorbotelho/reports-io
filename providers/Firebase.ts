@@ -16,7 +16,7 @@ export function getConnection() {
   return connection
 }
 
-export function getRepository(Constructor: ObjectConstructor) {
+export function getRepository<T extends TDecoratorConstructor>(Constructor: T) {
   class Repository extends Constructor {}
 
   // Returns an instance from this
