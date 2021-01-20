@@ -1,12 +1,16 @@
 import { Firebase } from "@Providers/Firebase"
 
 // Abstract class
-export abstract class BaseAuthenticate implements IFirebaseUserModel {
-  signup(auth: IFirebaseUser): Promise<firebase.default.auth.UserCredential> {
+export abstract class BaseAuthenticate {
+  static signup(
+    auth: IFirebaseUser
+  ): Promise<firebase.default.auth.UserCredential> {
     throw new Error("Method not implemented.")
   }
 
-  signin(auth: IFirebaseUser): Promise<firebase.default.auth.UserCredential> {
+  static signin(
+    auth: IFirebaseUser
+  ): Promise<firebase.default.auth.UserCredential> {
     throw new Error("Method not implemented.")
   }
 }
@@ -21,7 +25,7 @@ export function Authenticate() {
        */
       public subject = {}
 
-      public async signup({ email, password }: IFirebaseUser) {
+      public static async signup({ email, password }: IFirebaseUser) {
         const getUserInfo = await Firebase.getConnection()
           .auth()
           .createUserWithEmailAndPassword(email, password)
@@ -30,7 +34,7 @@ export function Authenticate() {
         return getUserInfo
       }
 
-      public async signin({ email, password }: IFirebaseUser) {
+      public static async signin({ email, password }: IFirebaseUser) {
         const getUserInfo = await Firebase.getConnection()
           .auth()
           .signInWithEmailAndPassword(email, password)

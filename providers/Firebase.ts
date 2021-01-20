@@ -6,12 +6,10 @@ import firebase from "firebase"
  * This is abstract function to transform a class
  * in an repository model likes active records.
  *
- * @param Constructor - Constructor from model
+ * @param Base - Constructor from model
  */
 export function getRepository<T extends Constructor<{}>>(Base: T) {
-  class Repository extends Base {}
-
-  return new Repository()
+  return class extends Base {}
 }
 
 export class Firebase {
