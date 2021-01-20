@@ -1,6 +1,6 @@
 // Firebase App (the core Firebase SDK) is always required and
 // must be listed before other Firebase SDKs
-import * as firebase from "firebase/app"
+import firebase from "firebase"
 
 /**
  * This is abstract function to transform a class
@@ -50,7 +50,7 @@ export class Firebase {
     measurementId: process.env.NEXT_PUBLIC_MEASUREMENT_ID
   }
 
-  private firebase = firebase.default
+  private firebase = firebase
 
   /**
    * Public attributes from this instance,
