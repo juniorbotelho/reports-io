@@ -1,4 +1,4 @@
-import { getConnection } from "@Providers/Firebase"
+import { Firebase } from "@Providers/Firebase"
 
 // Abstract class
 export abstract class BaseAuthenticate implements IFirebaseUserModel {
@@ -22,7 +22,7 @@ export function Authenticate() {
       public subject = {}
 
       public async signup({ email, password }: IFirebaseUser) {
-        const getUserInfo = await getConnection()
+        const getUserInfo = await Firebase.getConnection()
           .auth()
           .createUserWithEmailAndPassword(email, password)
 
@@ -31,7 +31,7 @@ export function Authenticate() {
       }
 
       public async signin({ email, password }: IFirebaseUser) {
-        const getUserInfo = await getConnection()
+        const getUserInfo = await Firebase.getConnection()
           .auth()
           .signInWithEmailAndPassword(email, password)
 

@@ -3,19 +3,11 @@
 import * as firebase from "firebase/app"
 
 /**
- * Instance connection from Firebase
- * class model
+ * This is abstract function to transform a class
+ * in an repository model likes active records.
+ *
+ * @param Constructor - Constructor from model
  */
-let connection: Firebase
-
-export function createConnection() {
-  connection = new Firebase()
-}
-
-export function getConnection() {
-  return connection
-}
-
 export function getRepository<T extends TDecoratorConstructor>(Constructor: T) {
   class Repository extends Constructor {}
 
@@ -23,6 +15,27 @@ export function getRepository<T extends TDecoratorConstructor>(Constructor: T) {
 }
 
 export class Firebase {
+  /**
+   * Static connection of this
+   * context instance
+   */
+  private static connection: Firebase = null
+
+  public static async createConnection() {
+    try {
+      this.connection = await new Firebase().connect()
+      return this.getConnection()
+
+      // Catch
+    } catch (error) {
+      if (error) throw error
+    }
+  }
+
+  public static getConnection() {
+    return this.connection
+  }
+
   /**
    * Firebase configuration
    * model from credentials
@@ -49,11 +62,14 @@ export class Firebase {
   public storage = this.firebase.storage
 
   // TODO: Fix problem with .analytics instanced by this.firebase
-  constructor() {
-    if (!this.firebase.apps.length) {
-      this.firebase.initializeApp(this.firebaseConfig)
-    } else {
-      this.firebase.app()
+  public async connect() {
+    try {
+      this.firebase.initializeApp(this.firebase)
+      this.firebase.analytics()
+
+      return this
+    } catch (error) {
+      if (error) throw error
     }
   }
 }
