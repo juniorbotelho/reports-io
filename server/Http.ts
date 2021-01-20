@@ -28,6 +28,9 @@ export class Server {
         .use(bodyParser.json({ limit: "24mb" }))
         .use(bodyParser.urlencoded({ extended: true }))
 
+      // Api routes
+      server.use("/api", RouterApi)
+
       // Bind next handler to express
       server.all("*", (request: Request, response: Response) => {
         return handle(request, response)
