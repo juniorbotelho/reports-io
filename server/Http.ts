@@ -1,4 +1,5 @@
 import express, { Request, Response } from "express"
+import { ErrorServerConnection } from "@Provider:Errors/Server"
 import next from "next"
 
 const environment = process.env.NODE_ENV !== "production"
@@ -6,19 +7,12 @@ const app = next({ dev: environment })
 const handle = app.getRequestHandler()
 const port = process.env.PORT || 3000
 
-// Handle exception server
-class ErrorServerConnection {
-  constructor(error: Error) {
-    throw error
-  }
-}
-
 // Handle method execution
 function Exec() {
   return (Target: { new (): Server }) => {
     new Target()
       .connect()
-      .then((status) => console.info(status))
+      .then((status) => status)
       .catch((error) => new ErrorServerConnection(error))
   }
 }
