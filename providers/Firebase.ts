@@ -19,7 +19,6 @@ export function getConnection() {
 export function getRepository<T extends TDecoratorConstructor>(Constructor: T) {
   class Repository extends Constructor {}
 
-  // Returns an instance from this
   return new Repository()
 }
 
@@ -49,10 +48,10 @@ export class Firebase {
   public firestore = this.firebase.firestore
   public storage = this.firebase.storage
 
+  // TODO: Fix problem with .analytics instanced by this.firebase
   constructor() {
     if (!this.firebase.apps.length) {
       this.firebase.initializeApp(this.firebaseConfig)
-      this.firebase.analytics()
     } else {
       this.firebase.app()
     }
