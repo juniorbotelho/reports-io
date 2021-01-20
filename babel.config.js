@@ -26,7 +26,10 @@ module.exports = {
         '@App:Models': './app/models',
         '@Provider:Errors': './providers/errors',
         '@Provider:Middlwares': './providers/middlewares',
-        '@Provider:Functions': './providers/functions'
+        '@Provider:Functions': './providers/functions',
+        '@Server:Config': './server/config',
+        '@Server:Routes': './server/routes',
+        '@Server:Services': './server/services'
       }
     }],
     "inline-react-svg"
