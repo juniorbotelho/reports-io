@@ -36,7 +36,10 @@
       "@App:Models/*": ["./app/models/*"],
       "@Provider:Errors/*": ["./providers/errors/*"],
       "@Provider:Middlewares/*": ["./providers/middlewares/*"],
-      "@Provider:Functions/*": ["./providers/functions/*"]
+      "@Provider:Functions/*": ["./providers/functions/*"],
+      "@Server:Config/*": ["./server/config/*"],
+      "@Server:Routes/*": ["./server/routes/*"],
+      "@Server:Services/*": ["./server/services/*"]
     },
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true

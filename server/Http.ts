@@ -1,6 +1,8 @@
 import express, { Request, Response } from "express"
-import { ErrorServerConnection } from "@Provider:Errors/Server"
+import bodyParser from "body-parser"
 import next from "next"
+
+import { ErrorServerConnection } from "@Provider:Errors/Server"
 
 const environment = process.env.NODE_ENV !== "production"
 const app = next({ dev: environment })
@@ -23,6 +25,8 @@ export class Server {
     try {
       await app.prepare()
       const server = express()
+        .use(bodyParser.json({ limit: "24mb" }))
+        .use(bodyParser.urlencoded({ extended: true }))
 
       // Bind next handler to express
       server.all("*", (request: Request, response: Response) => {
