@@ -8,8 +8,8 @@ import firebase from "firebase"
  *
  * @param Constructor - Constructor from model
  */
-export function getRepository<T extends TDecoratorConstructor>(Constructor: T) {
-  class Repository extends Constructor {}
+export function getRepository<T extends Constructor<{}>>(Base: T) {
+  class Repository extends Base {}
 
   return new Repository()
 }
