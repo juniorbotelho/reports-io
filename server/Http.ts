@@ -3,6 +3,7 @@ import bodyParser from "body-parser"
 import next from "next"
 
 import { ErrorServerConnection } from "@Provider:Errors/Server"
+import { Routes as UserRouter } from "@Server:Routes/Users"
 
 const environment = process.env.NODE_ENV !== "production"
 const app = next({ dev: environment })
@@ -27,6 +28,9 @@ export class Server {
       const server = express()
         .use(bodyParser.json({ limit: "24mb" }))
         .use(bodyParser.urlencoded({ extended: true }))
+
+      // User routes
+      server.use("/users", UserRouter)
 
       // Bind next handler to express
       server.all("*", (request: Request, response: Response) => {
