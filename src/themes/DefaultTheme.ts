@@ -8,7 +8,7 @@ export class Theme {
   private variants = {
     primary: "",
     secondary: "",
-    sucess: "",
+    success: "",
     danger: "",
     warning: "",
     info: "",
@@ -20,7 +20,7 @@ export class Theme {
     ...this.variants,
     primary: "hsl(171, 100%, 41%)",
     secondary: "hsl(0, 0%, 4%)",
-    sucess: "hsl(141, 53%, 53%)",
+    success: "hsl(141, 53%, 53%)",
     danger: "hsl(348, 100%, 61%)",
     warning: "hsl(48, 100%, 67%)",
     info: "hsl(204, 86%, 53%)",
@@ -37,7 +37,7 @@ export class Theme {
 
   public shades = {
     bis: "hsl(0, 0%, 7%)",
-    darker: "hsl(0, 0%, 21%)",
+    darker: "hsl(0 0% 0% / 25%)",
     lighter: "hsl(0, 0%, 86%)",
     white: "hsl(0, 0%, 98%)"
   }
