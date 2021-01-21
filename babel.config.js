@@ -9,6 +9,7 @@ module.exports = {
     }],
     ['module-resolver', {
       alias: {
+        '@Api': './src/api',
         '@Events': './src/events',
         '@Pages': './src/pages',
         '@Assets': './src/assets',
