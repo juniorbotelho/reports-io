@@ -7,13 +7,19 @@ export const Form: React.FC<HTMLFormProps> = ({ children, ...rest }) => {
   const formRef = useRef(null)
 
   const handleFormSubmit = async (data: FormSubmitData) => {
-    const schema = new RegisterSchema()
+    const schemaCompactRegister = new RegisterSchema()
 
-    // Validation
-    schema.validate(data, (error, errors) => {
+    const schemaResolve = (formData: FormSubmitData) => {
+      console.log(formData)
+    }
+
+    const schemaReject = ({ error, errors }: ObjectValidationError) => {
       error.inner.forEach((err) => (errors[err.path] = err.message))
       formRef.current.setErrors(errors)
-    })
+    }
+
+    // Validation
+    schemaCompactRegister.validate(data).then(schemaResolve).catch(schemaReject)
   }
 
   return (

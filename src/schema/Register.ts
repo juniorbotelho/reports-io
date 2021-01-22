@@ -15,19 +15,24 @@ export class RegisterSchema {
       .required()
   })
 
-  public async validate(data: FormSubmitData, callback: CallbackValidation) {
+  public async validate(data: FormSubmitData) {
     try {
       await this.schema.validate(data, {
         abortEarly: false
       })
 
-      // TODO: Catch axios error if exists
+      return Promise.resolve(data)
+      // TODO: Catch errors with interface implemented
     } catch (error) {
       const validationErrors = {}
 
       if (error instanceof Yup.ValidationError) {
-        // CallbackValidation
-        callback(error, validationErrors)
+        const instanceErrors = {
+          error: error,
+          errors: validationErrors
+        }
+
+        return Promise.reject<ObjectValidationError>(instanceErrors)
       }
     }
   }
