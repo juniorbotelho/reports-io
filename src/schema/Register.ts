@@ -11,7 +11,7 @@ export class RegisterSchema {
       .required(),
     password: Yup.string()
       .min(8)
-      .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm)
+      .matches(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/)
       .required()
   })
 
