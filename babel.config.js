@@ -10,6 +10,7 @@ module.exports = {
     ['module-resolver', {
       alias: {
         '@Api': './src/api',
+        '@Schema': './src/schema',
         '@Events': './src/events',
         '@Pages': './src/pages',
         '@Assets': './src/assets',
