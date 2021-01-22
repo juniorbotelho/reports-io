@@ -3,24 +3,15 @@ import { useField } from "@unform/core"
 
 import { Input as InputContainer } from "@Style:Components/Input"
 
-interface HTMLInputProps {
-  type: string
-  name: string
-  className?: string
-  placeholder?: string
-  value?: string
-}
-
 export const Input: React.FC<HTMLInputProps> = ({ name, ...rest }) => {
-  const inputRef = useRef(null)
-
   const { fieldName, registerField, error } = useField(name)
+  const inputRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
     registerField({
       name: fieldName,
       ref: inputRef.current,
-      getValue: (ref) => ref.value
+      getValue: (ref: HTMLInputElement) => ref.value
     })
   }, [fieldName, registerField])
 
@@ -28,13 +19,18 @@ export const Input: React.FC<HTMLInputProps> = ({ name, ...rest }) => {
     <>
       <InputContainer
         data-error={error}
-        className={error ?? "has-error"}
+        className={error}
         ref={inputRef}
         name={name}
+        spellCheck={true}
         {...rest}
       />
 
-      {error && <span className="error">{error}</span>}
+      {error && (
+        <span className="error">
+          <>{error}</>
+        </span>
+      )}
     </>
   )
 }
