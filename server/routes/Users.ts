@@ -8,9 +8,15 @@ Routes.post(
   [UserRegisterMiddleware],
   async ({ body }: Request, response: Response) => {
     const base64 = Buffer.from(
-      JSON.stringify({ ...body, password: "" })
+      JSON.stringify({
+        email: body.email,
+        username: body.username
+      })
     ).toString("base64")
 
-    response.status(200).send(`/accounts/validation/${base64}`)
+    response.status(200).send({
+      pathname: "/accounts/validation",
+      query: { info: base64 }
+    })
   }
 )

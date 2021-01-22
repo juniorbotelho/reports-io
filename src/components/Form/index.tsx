@@ -15,8 +15,8 @@ export const Form: React.FC<HTMLFormProps> = ({ children, ...rest }) => {
     const schemaResolve = async (formData: FormSubmitData) => {
       serverApi
         .post("/users/signup", formData)
-        .then(({ data }) => router.push(data))
-        .catch(({ response }) => console.log(response.data.errors))
+        .then(({ data }) => router.push({ ...data }))
+        .catch(({ response }) => console.error(response.data.errors))
     }
 
     const schemaReject = async ({ error, errors }: ObjectValidationError) => {
