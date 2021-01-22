@@ -26,7 +26,7 @@ export class Server {
     try {
       await app.prepare()
       const server = express()
-        .use(bodyParser.json({ limit: "24mb" }))
+        .use(bodyParser.json({ limit: "2mb" }))
         .use(bodyParser.urlencoded({ extended: true }))
 
       // User routes

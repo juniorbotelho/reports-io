@@ -6,7 +6,11 @@ export const Routes = express.Router()
 Routes.post(
   "/signup",
   [UserRegisterMiddleware],
-  async (request: Request, response: Response) => {
-    response.status(200).send("/accounts/validation")
+  async ({ body }: Request, response: Response) => {
+    const base64 = Buffer.from(
+      JSON.stringify({ ...body, password: "" })
+    ).toString("base64")
+
+    response.status(200).send(`/accounts/validation/${base64}`)
   }
 )
