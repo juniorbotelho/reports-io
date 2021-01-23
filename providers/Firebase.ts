@@ -21,12 +21,12 @@ export class Firebase {
 
   public static async createConnection() {
     try {
-      this.connection = await new Firebase().connect()
-      return this.getConnection()
+      await new Firebase().connect()
+      return Promise.resolve(Firebase.getConnection())
 
       // Catch
     } catch (error) {
-      if (error) throw error
+      throw Promise.reject(error)
     }
   }
 
@@ -62,12 +62,14 @@ export class Firebase {
   // TODO: Fix problem with .analytics instanced by this.firebase
   public async connect() {
     try {
-      this.firebase.initializeApp(this.firebase)
-      this.firebase.analytics()
+      this.firebase.initializeApp(this.firebaseConfig)
+      Firebase.connection = this
 
-      return this
+      return Promise.resolve(this)
+
+      // Error
     } catch (error) {
-      if (error) throw error
+      throw Promise.reject(error)
     }
   }
 }

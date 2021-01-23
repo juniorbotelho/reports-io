@@ -26,21 +26,35 @@ export function Authenticate() {
       public subject = {}
 
       public static async signup({ email, password }: IFirebaseUser) {
-        const getUserInfo = await Firebase.getConnection()
-          .auth()
-          .createUserWithEmailAndPassword(email, password)
+        try {
+          const getUserInfo = await Firebase.getConnection()
+            .auth()
+            .createUserWithEmailAndPassword(email, password)
 
-        // Returns firebase UserCredentials type
-        return getUserInfo
+          getUserInfo.user.sendEmailVerification({
+            url: `http://localhost:3000/accounts/finish/?accountInfo=${getUserInfo.operationType}`,
+            handleCodeInApp: true
+          })
+
+          // Returns firebase UserCredentials type
+          return getUserInfo
+        } catch (error) {
+          console.error(error)
+          throw new Error(error)
+        }
       }
 
       public static async signin({ email, password }: IFirebaseUser) {
-        const getUserInfo = await Firebase.getConnection()
-          .auth()
-          .signInWithEmailAndPassword(email, password)
+        try {
+          const getUserInfo = await Firebase.getConnection()
+            .auth()
+            .signInWithEmailAndPassword(email, password)
 
-        // Returns firebase UserCredentials type
-        return getUserInfo
+          // Returns firebase UserCredentials type
+          return getUserInfo
+        } catch (error) {
+          throw new Error(error)
+        }
       }
     }
   }
