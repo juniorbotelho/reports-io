@@ -32,7 +32,7 @@ export function Authenticate() {
             .createUserWithEmailAndPassword(email, password)
 
           getUserInfo.user.sendEmailVerification({
-            url: `http://localhost:3000/accounts/finish/?accountInfo=${getUserInfo.operationType}`,
+            url: `http://${process.env.SERVER_HOST}/accounts/finish/?accountInfo=${getUserInfo.operationType}`,
             handleCodeInApp: true
           })
 
