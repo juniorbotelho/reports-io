@@ -7,8 +7,17 @@ export const Title = styled.h1`
     margin-bottom: 1rem;
     letter-spacing: 2px;
 
+    &.Minor {
+      font-size: 1.4em;
+      color: ${(props) => props.theme.shades.lighter};
+    }
+
     @media only screen and (max-width: 400px) {
-      font-size: 2.6em;
+      font-size: 2em;
+
+      &.Minor {
+        font-size: 1.6em;
+      }
     }
   }
 `

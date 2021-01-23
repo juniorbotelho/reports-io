@@ -23,6 +23,11 @@ export const Form: React.FC<HTMLFormProps> = ({ children, ...rest }) => {
       if (error) {
         error.inner.forEach((err) => (errors[err.path] = err.message))
         formRef.current.setErrors(errors)
+
+        formRef.current.setFieldError(
+          "password",
+          "Must be minimum eight chars, at least one letter and one number."
+        )
       }
     }
 

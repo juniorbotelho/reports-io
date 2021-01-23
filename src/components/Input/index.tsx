@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react"
 import { useField } from "@unform/core"
 
 import { Input as InputContainer } from "@Style:Components/Input"
+import { Section } from "@Style:Components/Section"
 
 export const Input: React.FC<HTMLInputProps> = ({ name, ...rest }) => {
   const { fieldName, registerField, error } = useField(name)
@@ -16,7 +17,7 @@ export const Input: React.FC<HTMLInputProps> = ({ name, ...rest }) => {
   }, [fieldName, registerField])
 
   return (
-    <>
+    <Section className="Section_Input">
       <InputContainer
         data-error={error}
         className={error}
@@ -31,6 +32,6 @@ export const Input: React.FC<HTMLInputProps> = ({ name, ...rest }) => {
           <>{error}</>
         </span>
       )}
-    </>
+    </Section>
   )
 }

@@ -17,8 +17,12 @@ export const Label = styled.label`
   &.Label_Login {
     display: flex;
     flex-direction: column;
-    margin-bottom: 0.8em;
+    margin-bottom: 0.6em;
     font-size: 1.2em;
     line-height: 35px;
+
+    &.Label_Input {
+      margin-bottom: -0.25em;
+    }
   }
 `

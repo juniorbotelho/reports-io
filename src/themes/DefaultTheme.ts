@@ -37,7 +37,7 @@ export class Theme {
 
   public shades = {
     bis: "hsl(0, 0%, 7%)",
-    darker: "hsl(0 0% 0% / 25%)",
+    darker: "hsl(0deg 0% 0% / 50%)",
     lighter: "hsl(0, 0%, 86%)",
     white: "hsl(0, 0%, 98%)"
   }
