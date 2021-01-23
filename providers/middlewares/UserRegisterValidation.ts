@@ -1,7 +1,7 @@
 import express, { Request, Response, NextFunction } from "express"
 import { body, validationResult } from "express-validator"
 
-export const UserRegisterMiddleware = express().use(
+export const UserRegisterValidation = express().use(
   // Email must be an email
   body("email")
     .isEmail()

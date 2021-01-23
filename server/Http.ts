@@ -2,6 +2,7 @@ import express, { Request, Response } from "express"
 import bodyParser from "body-parser"
 import next from "next"
 
+import { Firebase } from "@Providers/Firebase"
 import { ErrorServerConnection } from "@Provider:Errors/Server"
 import { Routes as UserRouter } from "@Server:Routes/Users"
 
@@ -37,7 +38,9 @@ export class Server {
         return handle(request, response)
       })
 
-      server.listen(port, (error?: Error) => {
+      server.listen(port, async (error?: Error) => {
+        await Firebase.createConnection()
+
         if (error) throw new ErrorServerConnection(error)
       })
     } catch (error) {

@@ -1,22 +1,10 @@
-import express, { Request, Response } from "express"
-import { UserRegisterMiddleware } from "@Provider:Middlewares/UserMiddleware"
+import express from "express"
 
+// Registers
+import { UsersController } from "@App:Controllers/UsersController"
+import { UserRegisterValidation } from "@Provider:Middlewares/UserRegisterValidation"
+
+// App
 export const Routes = express.Router()
 
-Routes.post(
-  "/signup",
-  [UserRegisterMiddleware],
-  async ({ body }: Request, response: Response) => {
-    const base64 = Buffer.from(
-      JSON.stringify({
-        email: body.email,
-        username: body.username
-      })
-    ).toString("base64")
-
-    response.status(200).send({
-      pathname: "/accounts/validation",
-      query: { info: base64 }
-    })
-  }
-)
+Routes.post("/signup", [UserRegisterValidation], UsersController.store)
