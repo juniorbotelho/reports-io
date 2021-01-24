@@ -1,14 +1,21 @@
 {
-  "name": "reactsetup",
+  "name": "reports.io",
   "version": "0.1.0",
   "private": true,
   "main": "server/Http",
   "scripts": {
+    "create:model": "yarn typeorm entity:create -n",
+    "create:subscriber": "yarn typeorm subscriber:create -n",
+    "create:migration": "yarn typeorm migration:generate -- -n",
+    "migration:run": "yarn typeorm migration:run",
+    "migration:revert": "yarn typeorm migration:revert",
+    "migration:show": "yarn typeorm migration:show",
     "server:dev": "nodemon --exec 'node --loader @k-foss/ts-esnode --experimental-specifier-resolution=node' server/Http.ts",
-    "server:build": "tsc --project server.json",
+    "server:build": "tsc --project tsconfig.server.json",
     "next:build": "next build",
     "next:dev": "next dev",
     "next:start": "next start",
+    "typeorm": "TS_NODE_PROJECT=tsconfig.node.json TS_NODE_TRANSPILE_ONLY=true ts-node ./node_modules/typeorm/cli.js",
     "build": "npm run next:build && npm run server:build",
     "start": "NODE_ENV=production node dist/server/Http.js"
   },
@@ -22,15 +29,15 @@
     "express-validator": "^6.9.2",
     "firebase": "^8.2.3",
     "fs-extra": "^9.1.0",
-    "mysql": "^2.18.1",
+    "mysql": "^2.14.1",
     "next": "10.0.5",
     "next-images": "^1.6.2",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-lottie": "^1.2.3",
-    "reflect-metadata": "^0.1.13",
+    "reflect-metadata": "^0.1.10",
     "styled-components": "^5.1.1",
-    "typeorm": "^0.2.30",
+    "typeorm": "0.2.29",
     "yup": "^0.32.8"
   },
   "devDependencies": {
@@ -43,7 +50,7 @@
     "@types/express": "^4.17.11",
     "@types/express-validator": "^3.0.0",
     "@types/fs-extra": "^9.0.6",
-    "@types/node": "^14.6.0",
+    "@types/node": "^8.0.29",
     "@types/react": "^16.9.46",
     "@types/react-lottie": "^1.2.5",
     "@types/react-spinkit": "^3.0.6",
@@ -67,8 +74,8 @@
     "husky": "^4.3.8",
     "nodemon": "^2.0.7",
     "prettier": "^2.1.0",
-    "ts-node": "^9.1.1",
-    "typescript": "^4.0.2"
+    "ts-node": "3.3.0",
+    "typescript": "3.3.3333"
   },
   "husky": {
     "hooks": {
