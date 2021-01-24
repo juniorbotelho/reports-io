@@ -6,6 +6,7 @@ export const Title = styled.h1`
     font-size: 3em;
     margin-bottom: 1rem;
     letter-spacing: 2px;
+    color: ${(props) => props.theme.colors.primary};
 
     &.Minor {
       font-size: 1.4em;

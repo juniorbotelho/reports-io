@@ -4,10 +4,13 @@
   "private": true,
   "main": "server/Http",
   "scripts": {
-    "server": "nodemon --exec 'node --loader @k-foss/ts-esnode --experimental-specifier-resolution=node' server/Http.ts",
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
+    "server:dev": "nodemon --exec 'node --loader @k-foss/ts-esnode --experimental-specifier-resolution=node' server/Http.ts",
+    "server:build": "tsc --project server.json",
+    "next:build": "next build",
+    "next:dev": "next dev",
+    "next:start": "next start",
+    "build": "npm run next:build && npm run server:build",
+    "start": "NODE_ENV=production node dist/server/Http.js"
   },
   "dependencies": {
     "@babel/core": "^7.12.10",
