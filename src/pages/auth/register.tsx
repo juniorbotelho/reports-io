@@ -80,7 +80,7 @@ const Register: React.FC = () => {
                 </Link>
               </Label>
 
-              <Button type="submit" className="Button_Register">
+              <Button type="submit" className="Button">
                 Register
               </Button>
             </Form>

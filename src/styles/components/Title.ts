@@ -21,3 +21,10 @@ export const Title = styled.h1`
     }
   }
 `
+
+export const SubTitle = styled.h2`
+  &.Card_Header_Title {
+    font-size: 2em;
+    text-align: center;
+  }
+`

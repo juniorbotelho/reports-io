@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 export const Button = styled.button`
-  &.Button_Register {
+  &.Button {
     display: block;
     width: 100%;
     height: 40px;
@@ -13,5 +13,11 @@ export const Button = styled.button`
     color: ${(props) => props.theme.colors.dark};
     margin-top: 0.2em;
     cursor: pointer;
+
+    &.Button_Card {
+      width: 50%;
+      margin: 0 auto;
+      margin-top: 1em;
+    }
   }
 `
