@@ -1,7 +1,7 @@
-import { Firebase } from "@Providers/Firebase"
+import { Firebase as Fire } from "@Providers/Firebase"
 
 // Abstract class
-export abstract class BaseAuthenticate {
+export abstract class BaseFirebase {
   createUserWithEmailAndPassword(
     auth: IFirebaseUser
   ): Promise<firebase.default.auth.UserCredential> {
@@ -15,8 +15,8 @@ export abstract class BaseAuthenticate {
   }
 }
 
-export function Authenticate() {
-  return <T extends Constructor<BaseAuthenticate>>(Constructor: T) => {
+export function Firebase() {
+  return <T extends Constructor<BaseFirebase>>(Constructor: T) => {
     return class extends Constructor {
       /**
        *
@@ -30,7 +30,7 @@ export function Authenticate() {
         password
       }: IFirebaseUser) {
         try {
-          const getUserInfo = await Firebase.getConnection()
+          const getUserInfo = await Fire.getConnection()
             .auth()
             .createUserWithEmailAndPassword(email, password)
 
@@ -51,7 +51,7 @@ export function Authenticate() {
         password
       }: IFirebaseUser) {
         try {
-          const getUserInfo = await Firebase.getConnection()
+          const getUserInfo = await Fire.getConnection()
             .auth()
             .signInWithEmailAndPassword(email, password)
 
