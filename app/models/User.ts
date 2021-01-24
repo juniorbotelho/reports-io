@@ -11,10 +11,10 @@ export class User {
   @PrimaryGeneratedColumn("uuid")
   id: string
 
-  @Column()
+  @Column({ default: "" })
   firstname: string
 
-  @Column()
+  @Column({ default: "" })
   lastname: string
 
   @Column({ unique: true })
@@ -26,7 +26,7 @@ export class User {
   @Column()
   password: string
 
-  @Column()
+  @Column({ default: false })
   validated: boolean
 
   @CreateDateColumn()

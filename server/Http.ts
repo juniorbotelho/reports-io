@@ -1,6 +1,7 @@
 import "reflect-metadata"
 import express, { Request, Response } from "express"
 import bodyParser from "body-parser"
+import { createConnection } from "typeorm"
 import next from "next"
 
 import { Firebase } from "@Providers/Firebase"
@@ -40,6 +41,7 @@ export class Server {
       })
 
       server.listen(port, async (error?: Error) => {
+        await createConnection()
         await Firebase.createConnection()
 
         if (error) throw new ErrorServerConnection(error)
