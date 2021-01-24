@@ -40,7 +40,7 @@ const Validation: React.FC = () => {
 
   useEffect(() => {
     if (data.email && data.username) {
-      const title = `Hi ${data.username}, all ready to start?`
+      const title = `Hi ${data.username}, are you ready?`
       const body = `Now you just need to check your email inbox to validate your account and you will be able to take advantage of all the platform's features.`
 
       // Defined card
