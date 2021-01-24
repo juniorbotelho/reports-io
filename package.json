@@ -10,8 +10,9 @@
     "migration:run": "yarn typeorm migration:run",
     "migration:revert": "yarn typeorm migration:revert",
     "migration:show": "yarn typeorm migration:show",
-    "server:dev": "nodemon --exec 'node --loader @k-foss/ts-esnode --experimental-specifier-resolution=node' server/Http.ts",
-    "server:build": "tsc --project tsconfig.server.json",
+    "migration:drop": "yarn typeorm schema:drop",
+    "server:dev": "ts-node --project server/tsconfig.json -r tsconfig-paths/register server/Http.ts",
+    "server:build": "tsc --project server/tsconfig.json",
     "next:build": "next build",
     "next:dev": "next dev",
     "next:start": "next start",
@@ -75,6 +76,7 @@
     "nodemon": "^2.0.7",
     "prettier": "^2.1.0",
     "ts-node": "3.3.0",
+    "tsconfig-paths": "^3.9.0",
     "typescript": "3.3.3333"
   },
   "husky": {
