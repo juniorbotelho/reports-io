@@ -19,6 +19,7 @@ module.exports = {
         '@Themes': './src/themes',
         '@Hooks': './src/hooks',
         '@Providers': './providers',
+        '@Asset:Anims': './src/assets/animations',
         '@Style:Pages': './src/styles/pages',
         '@Style:Components': './src/styles/components',
         '@Hook:Themes': './src/hooks/themes',
