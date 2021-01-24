@@ -20,7 +20,7 @@ export const Form: React.FC<HTMLFormProps> = ({ children, ...rest }) => {
         .post("/users/signup", formData)
         .then(({ data }) => router.push({ ...data }))
         .catch(({ response }) => {
-          const error: RegisterResponseError[] = response.data.errors
+          const error: RegisterResponseError[] = response?.data.errors
 
           error.forEach((ctx) => {
             notifications.push({ message: ctx.msg, seconds: 60 })

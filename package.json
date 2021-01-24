@@ -11,7 +11,7 @@
     "migration:revert": "yarn typeorm migration:revert",
     "migration:show": "yarn typeorm migration:show",
     "migration:drop": "yarn typeorm schema:drop",
-    "server:dev": "nodemon --watch './**/*.{ts}' --ignore './src/**/*.ts' --exec 'ts-node --project server/tsconfig.json -r tsconfig-paths/register' server/Http.ts",
+    "server:dev": "nodemon --watch './**/*.{ts}' --ignore './src/**/*.{ts,tsx}' --exec 'ts-node --project server/tsconfig.json -r tsconfig-paths/register' server/Http.ts",
     "server:build": "tsc --project server/tsconfig.json",
     "next:build": "next build",
     "next:dev": "next dev",
