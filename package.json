@@ -22,12 +22,15 @@
     "express-validator": "^6.9.2",
     "firebase": "^8.2.3",
     "fs-extra": "^9.1.0",
+    "mysql": "^2.18.1",
     "next": "10.0.5",
     "next-images": "^1.6.2",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-lottie": "^1.2.3",
+    "reflect-metadata": "^0.1.13",
     "styled-components": "^5.1.1",
+    "typeorm": "^0.2.30",
     "yup": "^0.32.8"
   },
   "devDependencies": {
