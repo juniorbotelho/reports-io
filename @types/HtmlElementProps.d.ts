@@ -11,3 +11,8 @@ declare interface HTMLInputProps {
   placeholder?: string
   value?: string
 }
+
+interface HTMLNotificationProps {
+  seconds?: number
+  message?: string
+}

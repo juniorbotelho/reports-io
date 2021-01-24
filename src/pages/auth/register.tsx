@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import Head from "next/head"
 
 import { Register as RegisterContainer } from "@Style:Pages/Register"
@@ -15,88 +15,103 @@ import { Button } from "@Style:Components/Button"
 import { Link } from "@Style:Components/Link"
 import { Section } from "@Style:Components/Section"
 
+import { NotificationProvider } from "@Hook:Components/Notification"
+
 const Register: React.FC = () => {
+  const [toggle, setToggle] = useState(false)
+
   return (
     <>
       <Head>
         <title>Reports.io/Register</title>
       </Head>
 
-      <Div className="NotificationContainer">
-        <Notification
-          message="An error occurred while trying to register. The email you entered is
-already in use."
-        />
-      </Div>
+      <NotificationProvider>
+        {toggle && (
+          <Div className="NotificationContainer">
+            <Notification />
+          </Div>
+        )}
 
-      <RegisterContainer>
-        <Section className="Section_Register">
-          <Section className="Section_Register Message">
-            <Title className="Title_Register Minor">Reports.io</Title>
-            <Title className="Title_Register">
-              Register on our platform and join us.
-            </Title>
+        <RegisterContainer>
+          <Section className="Section_Register">
+            <Section className="Section_Register Message">
+              <Title className="Title_Register Minor">Reports.io</Title>
+              <Title className="Title_Register">
+                Register on our platform and join us.
+              </Title>
+            </Section>
+
+            <Section className="Section_Register Form">
+              <Form
+                className="Form_Register"
+                action="/users/signup"
+                method="POST"
+              >
+                <Label htmlFor="email" className="Label_Register Label_Input">
+                  <Span className="Span_Register">Email:</Span>
+                  <Input
+                    className="Input_Register"
+                    type="text"
+                    name="email"
+                    placeholder="Email"
+                  />
+                </Label>
+
+                <Label
+                  htmlFor="username"
+                  className="Label_Register Label_Input"
+                >
+                  <Span className="Span_Register">Username:</Span>
+                  <Input
+                    className="Input_Register"
+                    type="text"
+                    name="username"
+                    placeholder="Username"
+                  />
+                </Label>
+
+                <Label
+                  htmlFor="password"
+                  className="Label_Register Label_Input"
+                >
+                  <Span className="Span_Register">Password:</Span>
+                  <Input
+                    className="Input_Register"
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                  />
+                </Label>
+
+                <Label htmlFor="password" className="Label_Register">
+                  <Span className="Span_Register">Confirm Password:</Span>
+                  <Input
+                    className="Input_Register"
+                    type="password"
+                    name="password_confirmation"
+                    placeholder="Confirm Password"
+                  />
+                </Label>
+
+                <Label className="Label_Register Label_Undo">
+                  <Link href="#" className="Link_Register">
+                    Forgot password?
+                  </Link>
+                </Label>
+
+                <Button
+                  type="submit"
+                  className="Button"
+                  onClick={() => setToggle(true)}
+                >
+                  Register
+                </Button>
+              </Form>
+            </Section>
           </Section>
-
-          <Section className="Section_Register Form">
-            <Form
-              className="Form_Register"
-              action="/users/signup"
-              method="POST"
-            >
-              <Label htmlFor="email" className="Label_Register Label_Input">
-                <Span className="Span_Register">Email:</Span>
-                <Input
-                  className="Input_Register"
-                  type="text"
-                  name="email"
-                  placeholder="Email"
-                />
-              </Label>
-
-              <Label htmlFor="username" className="Label_Register Label_Input">
-                <Span className="Span_Register">Username:</Span>
-                <Input
-                  className="Input_Register"
-                  type="text"
-                  name="username"
-                  placeholder="Username"
-                />
-              </Label>
-
-              <Label htmlFor="password" className="Label_Register Label_Input">
-                <Span className="Span_Register">Password:</Span>
-                <Input
-                  className="Input_Register"
-                  type="password"
-                  name="password"
-                  placeholder="Password"
-                />
-              </Label>
-
-              <Label htmlFor="password" className="Label_Register">
-                <Span className="Span_Register">Confirm Password:</Span>
-                <Input
-                  className="Input_Register"
-                  type="password"
-                  name="password_confirmation"
-                  placeholder="Confirm Password"
-                />
-              </Label>
-
-              <Label className="Label_Register Label_Undo">
-                <Link href="#" className="Link_Register">
-                  Forgot password?
-                </Link>
-              </Label>
-
-              <Button type="submit" className="Button">
-                Register
-              </Button>
-            </Form>
-          </Section>
-        </Section>
-      </RegisterContainer>
+        </RegisterContainer>
+      </NotificationProvider>
     </>
   )
 }
