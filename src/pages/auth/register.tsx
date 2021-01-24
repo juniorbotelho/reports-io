@@ -5,7 +5,9 @@ import { Register as RegisterContainer } from "@Style:Pages/Register"
 
 import { Form } from "@Components/Form"
 import { Input } from "@Components/Input"
+import { Notification } from "@Components/Notification"
 
+import { Div } from "@Style:Components/Div"
 import { Title } from "@Style:Components/Title"
 import { Span } from "@Style:Components/Span"
 import { Label } from "@Style:Components/Label"
@@ -19,6 +21,14 @@ const Register: React.FC = () => {
       <Head>
         <title>Reports.io/Register</title>
       </Head>
+
+      <Div className="NotificationContainer">
+        <Notification
+          message="An error occurred while trying to register. The email you entered is
+already in use."
+        />
+      </Div>
+
       <RegisterContainer>
         <Section className="Section_Register">
           <Section className="Section_Register Message">
