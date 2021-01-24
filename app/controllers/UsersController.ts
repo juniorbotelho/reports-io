@@ -15,6 +15,7 @@ export class UsersController {
 
       await repo.save({
         email: body.email,
+        username: body.username,
         password: body.password
       })
 
