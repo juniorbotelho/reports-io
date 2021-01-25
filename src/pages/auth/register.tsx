@@ -37,51 +37,24 @@ const Register: React.FC = () => {
           <Section className="Section_Register">
             <Section className="Section_Register Message">
               <Title className="Title_Register Minor">Reports.io</Title>
-              <Title className="Title_Register">
-                Register on our platform and join us.
-              </Title>
+              <Title className="Title_Register">Register on our platform and join us.</Title>
             </Section>
 
             <Section className="Section_Register Form">
-              <Form
-                className="Form_Register"
-                action="/users/signup"
-                method="POST"
-              >
+              <Form className="Form_Register" action="/users/signup" method="POST">
                 <Label htmlFor="email" className="Label_Register Label_Input">
                   <Span className="Span_Register">Email:</Span>
-                  <Input
-                    className="Input_Register"
-                    type="text"
-                    name="email"
-                    placeholder="Email"
-                  />
+                  <Input className="Input_Register" type="text" name="email" placeholder="Email" />
                 </Label>
 
-                <Label
-                  htmlFor="username"
-                  className="Label_Register Label_Input"
-                >
+                <Label htmlFor="username" className="Label_Register Label_Input">
                   <Span className="Span_Register">Username:</Span>
-                  <Input
-                    className="Input_Register"
-                    type="text"
-                    name="username"
-                    placeholder="Username"
-                  />
+                  <Input className="Input_Register" type="text" name="username" placeholder="Username" />
                 </Label>
 
-                <Label
-                  htmlFor="password"
-                  className="Label_Register Label_Input"
-                >
+                <Label htmlFor="password" className="Label_Register Label_Input">
                   <Span className="Span_Register">Password:</Span>
-                  <Input
-                    className="Input_Register"
-                    type="password"
-                    name="password"
-                    placeholder="Password"
-                  />
+                  <Input className="Input_Register" type="password" name="password" placeholder="Password" />
                 </Label>
 
                 <Label htmlFor="password" className="Label_Register">
@@ -100,11 +73,7 @@ const Register: React.FC = () => {
                   </Link>
                 </Label>
 
-                <Button
-                  type="submit"
-                  className="Button"
-                  onClick={() => setToggle(true)}
-                >
+                <Button type="submit" className="Button" onClick={() => setToggle(true)}>
                   Register
                 </Button>
               </Form>
