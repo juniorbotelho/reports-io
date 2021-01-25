@@ -5,6 +5,10 @@ export const Label = styled.label`
     cursor: pointer;
     display: inline-block !important;
 
+    &.Only {
+      margin-top: 0.75em;
+    }
+
     &:hover {
       .Link_Register {
         color: ${(props) => props.theme.colors.light};
