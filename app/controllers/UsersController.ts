@@ -5,15 +5,43 @@ import { Nodemailer } from "@Providers/Nodemailer"
 import { Encrypter } from "@Providers/Encrypter"
 
 export class UsersController {
-  public static async index({ query }: User.Request, response: User.Response) {
-    if (query.token) {
-      // TODO: Make it if query token is provided
-      return response.send("/accounts/finish")
-    }
+  public static async index(request: User.Request, response: User.Response) {
+    const { body, query } = request
+    const { email, username, password } = body
 
     if (query.validation) {
       // TODO: Make it if query validtion is provided
       return response.send("/accounts/finish")
+    }
+
+    // Standart flow
+    try {
+      const repo = getRepository(User)
+      let user: User = null
+
+      // Verify
+      if (username) user = await repo.findOneOrFail({ where: { username } })
+      if (email) user = await repo.findOneOrFail({ where: { email } })
+
+      // Compare
+      const hashComparePassword = await bcrypt.compare(password, user.password)
+
+      if (hashComparePassword) {
+        return response.status(200).json({
+          authenticated: true,
+          message: "Successfully authenticated.",
+          ...user
+        })
+      } else {
+        return response.status(401).json({
+          authenticated: false,
+          message: "There was an error to connect, the password is incorrect.",
+          ...request.body
+        })
+      }
+    } catch (error) {
+      // Sentry Error
+      console.error(error)
     }
   }
 
