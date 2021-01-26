@@ -4,6 +4,7 @@ module.exports = {
   arrowParens: 'always',
   trailingComma: 'none',
   endOfLine: 'auto',
-  proseWrap: 'never',
-  printWidth: 120
+  proseWrap: 'preserve',
+  printWidth: 80,
+  jsxBracketSameLine: true
 };
