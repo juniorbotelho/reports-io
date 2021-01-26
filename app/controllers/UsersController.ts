@@ -28,9 +28,10 @@ export class UsersController {
 
       if (hashComparePassword) {
         return response.status(200).json({
+          ...user,
           authenticated: true,
           message: "Successfully authenticated.",
-          ...user
+          password: null
         })
       } else {
         return response.status(401).json({
