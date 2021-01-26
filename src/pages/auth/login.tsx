@@ -37,19 +37,36 @@ const Login: React.FC = () => {
           <Section className="Section_Register">
             <Section className="Section_Register Message">
               <Title className="Title_Register Minor">Reports.io</Title>
-              <Title className="Title_Register">Log in to our platform to be.</Title>
+              <Title className="Title_Register">
+                Log in to our platform to be.
+              </Title>
             </Section>
 
             <Section className="Section_Register Form">
-              <Form className="Form_Register" action="/users/signin" method="POST">
+              <Form
+                className="Form_Register"
+                action="/users/signin"
+                method="POST">
                 <Label htmlFor="email" className="Label_Register Label_Input">
                   <Span className="Span_Register">Email or Username:</Span>
-                  <Input className="Input_Register" type="text" name="email" placeholder="Email or Username" />
+                  <Input
+                    className="Input_Register"
+                    type="text"
+                    name="username"
+                    placeholder="Email or Username"
+                  />
                 </Label>
 
-                <Label htmlFor="password" className="Label_Register Label_Input">
+                <Label
+                  htmlFor="password"
+                  className="Label_Register Label_Input">
                   <Span className="Span_Register">Password:</Span>
-                  <Input className="Input_Register" type="password" name="password" placeholder="Password" />
+                  <Input
+                    className="Input_Register"
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                  />
                 </Label>
 
                 <Label className="Label_Register Label_Undo Only">
@@ -58,8 +75,11 @@ const Login: React.FC = () => {
                   </Link>
                 </Label>
 
-                <Button type="submit" className="Button" onClick={() => setToggle(true)}>
-                  Register
+                <Button
+                  type="submit"
+                  className="Button"
+                  onClick={() => setToggle(true)}>
+                  Login
                 </Button>
               </Form>
             </Section>
