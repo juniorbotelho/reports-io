@@ -11,7 +11,7 @@ import { Text } from "@Styles/components/Text"
 const Finish: React.FC = () => {
   // Methods
   const handleSubmitAuth = () => {
-    fetch("/users/private/auth")
+    fetch("/auth/private")
       .then(async (response) => {
         const fetchData = await response.json()
         console.log(fetchData)
