@@ -11,7 +11,7 @@ export class UsersController {
 
     if (query.validation) {
       // TODO: Make it if query validtion is provided
-      return response.send("/accounts/finish")
+      return response.status(200).redirect("/accounts/finish")
     }
 
     // Standart flow
