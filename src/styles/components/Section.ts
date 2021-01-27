@@ -7,6 +7,31 @@ export const Section = styled.section`
     align-items: center;
     width: 100vw;
     height: 100vh;
+
+    &.Finish {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+
+      div.FinishedDivisor {
+        display: block;
+        width: 200px;
+      }
+
+      h2.FinishedLoaded {
+        font-size: 3.6em;
+        width: 600px;
+        margin-bottom: 0.6em;
+        color: ${(props) => props.theme.colors.primary};
+      }
+
+      p.FinishedText {
+        font-size: 1.3em;
+        line-height: 1.618em;
+        width: 600px;
+        margin-bottom: 2em;
+      }
+    }
   }
 
   &.Section_Validation {
