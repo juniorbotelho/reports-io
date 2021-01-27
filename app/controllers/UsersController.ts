@@ -81,12 +81,18 @@ export class UsersController {
       const confirmReference = `http://localhost:3000/users/email?validation=${encrypted}`
 
       await transporter.sendMail({
-        from: '"reports.io" <account@reports.io>', // sender address
-        to: body.email, // list of receivers
-        subject: "Confirm your email!", // Subject line
-        text:
-          "In order for your account to be validated in our database, you must activate it by clicking the link below: D", // plain text body
-        html: `<a href="${confirmReference}">${confirmReference}</a>` // html body
+        from: '"reports.io" <account@reports.io>',
+        to: body.email,
+        subject: "Confirm your email!",
+        text: "Validate your account!",
+        html: `
+          <p>
+            In order for your account to be validated in our database,
+            you must activate it by clicking the link below: D
+          </p>
+          <a href="${confirmReference}">
+            Click here to activate
+          </a>`
       })
 
       response.status(200).send({
