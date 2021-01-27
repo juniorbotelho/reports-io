@@ -3,7 +3,7 @@ import express from "express"
 // Registers
 import { UsersController } from "@App:Controllers/UsersController"
 import { UserRegisterValidation } from "@Provider:Middlewares/UserRegisterValidation"
-import { UserMultipleAccount } from "@Providers/middlewares/UserMultipleAccount"
+import { UserMultipleAccount } from "@Provider:Middlewares/UserMultipleAccount"
 import { UserEmailValidation } from "@Provider:Middlewares/UserEmailValidation"
 import { UserWebToken } from "@Provider:Middlewares/UserWebToken"
 import { UserLoginValidation } from "@Providers/middlewares/UserLoginValidation"
