@@ -5,7 +5,6 @@ import Lottie from "react-lottie"
 import { Section } from "@Style:Components/Section"
 import { Div } from "@Style:Components/Div"
 import { Button } from "@Style:Components/Button"
-
 import { Card } from "@Components/Card"
 
 import animData from "@Asset:Anims/notifications.json"
@@ -49,6 +48,19 @@ const Validation: React.FC = () => {
     }
   }, [data])
 
+  // Methods
+  const handleSubmitAuth = () => {
+    fetch("/users/private/auth")
+      .then(async (response) => {
+        const fetchData = await response.json()
+        console.log(fetchData)
+      })
+      .catch((error) => {
+        // TODO: Sentry Error
+        console.error(error)
+      })
+  }
+
   return (
     <>
       {load && (
@@ -88,7 +100,10 @@ const Validation: React.FC = () => {
               title={card.title}
               body={card.body}
             />
-            <Button type="submit" className="Button Button_Card">
+            <Button
+              type="submit"
+              onClick={handleSubmitAuth}
+              className="Button Button_Card">
               Get started
             </Button>
           </Div>

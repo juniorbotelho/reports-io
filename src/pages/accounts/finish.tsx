@@ -8,35 +8,55 @@ import { SubTitle } from "@Style:Components/Title"
 import { Button } from "@Styles/components/Button"
 import { Text } from "@Styles/components/Text"
 
-const Finish: React.FC = () => (
-  <Section className="Section_Loading Finish">
-    <Lottie
-      options={{
-        loop: true,
-        autoplay: true,
-        animationData: Validated,
-        rendererSettings: {
-          preserveAspectRatio: "xMidYMid slice"
-        }
-      }}
-      width={150}
-      height={150}
-    />
+const Finish: React.FC = () => {
+  // Methods
+  const handleSubmitAuth = () => {
+    fetch("/users/private/auth")
+      .then(async (response) => {
+        const fetchData = await response.json()
+        console.log(fetchData)
+      })
+      .catch((error) => {
+        // TODO: Sentry Error
+        console.error(error)
+      })
+  }
 
-    <SubTitle className="FinishedLoaded">
-      Your account has been successfully validated
-    </SubTitle>
+  return (
+    <Section className="Section_Loading Finish">
+      <Lottie
+        options={{
+          loop: true,
+          autoplay: true,
+          animationData: Validated,
+          rendererSettings: {
+            preserveAspectRatio: "xMidYMid slice"
+          }
+        }}
+        width={150}
+        height={150}
+      />
 
-    <Text className="FinishedText">
-      Now that your account has been successfully validated, you will be able to
-      take advantage of all the resources that the platform can provide in this
-      initial phase of development,
-    </Text>
+      <SubTitle className="FinishedLoaded">
+        Your account has been successfully validated
+      </SubTitle>
 
-    <Div className="FinishedDivisor">
-      <Button className="Button">Continue</Button>
-    </Div>
-  </Section>
-)
+      <Text className="FinishedText">
+        Now that your account has been successfully validated, you will be able
+        to take advantage of all the resources that the platform can provide in
+        this initial phase of development,
+      </Text>
+
+      <Div className="FinishedDivisor">
+        <Button
+          type="submit"
+          onClick={handleSubmitAuth}
+          className="Button Button_Finish">
+          Continue
+        </Button>
+      </Div>
+    </Section>
+  )
+}
 
 export default Finish
