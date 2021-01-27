@@ -7,6 +7,7 @@ import next from "next"
 import { Firebase } from "@Providers/Firebase"
 import { ErrorServerConnection } from "@Provider:Errors/Server"
 import { Routes as UserRouter } from "@Server:Routes/Users"
+import { Routes as AuthRouter } from "@Server:Routes/Auth"
 
 const environment = process.env.NODE_ENV !== "production"
 const app = next({ dev: environment })
@@ -15,7 +16,7 @@ const port = process.env.PORT || 3000
 
 // Handle method execution
 function Exec() {
-  return (Target: { new (): Server }) => {
+  return (Target: Server.Target) => {
     new Target()
       .connect()
       .then((status) => status)
@@ -34,6 +35,7 @@ export class Server {
 
       // User routes
       server.use("/users", UserRouter)
+      server.use("/auth", AuthRouter)
 
       // Bind next handler to express
       server.all("*", (request: Request, response: Response) => {
