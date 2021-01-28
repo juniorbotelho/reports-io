@@ -2,6 +2,9 @@
 // must be listed before other Firebase SDKs
 import firebase from "firebase"
 
+// Types
+type Constructor<T> = new (...args: any[]) => T
+
 /**
  * This is abstract function to transform a class
  * in an repository model likes active records.
@@ -9,7 +12,7 @@ import firebase from "firebase"
  * @param Base - Constructor from model
  */
 export function getRepository<T extends Constructor<{}>>(Base: T) {
-  return class extends Base {}
+  return class extends Base { }
 }
 
 export class Firebase {

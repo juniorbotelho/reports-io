@@ -1,5 +1,11 @@
 import { createTransport } from "nodemailer"
 
+// Namespaces
+namespace Nodemailer {
+  export type MailOptions = import("nodemailer/lib/smtp-transport").Options
+  export type Mail = import("nodemailer/lib/mailer")
+}
+
 export class Nodemailer {
   /**
    * Initial configuration on environment variables for

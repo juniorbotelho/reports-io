@@ -1,15 +1,24 @@
 import { Firebase as Fire } from "@Providers/Firebase"
 
+// Types
+type Constructor<T> = new (...args: any[]) => T
+
+// Interfaces
+declare interface FirebaseUser {
+  email: string
+  password: string
+}
+
 // Abstract class
 export abstract class BaseFirebase {
   createUserWithEmailAndPassword(
-    auth: IFirebaseUser
+    auth: FirebaseUser
   ): Promise<firebase.default.auth.UserCredential> {
     throw new Error("Method not implemented.")
   }
 
   signInWithEmailAndPassword(
-    auth: IFirebaseUser
+    auth: FirebaseUser
   ): Promise<firebase.default.auth.UserCredential> {
     throw new Error("Method not implemented.")
   }
@@ -28,7 +37,7 @@ export function Firebase() {
       public async createUserWithEmailAndPassword({
         email,
         password
-      }: IFirebaseUser) {
+      }: FirebaseUser) {
         try {
           const getUserInfo = await Fire.getConnection()
             .auth()
@@ -49,7 +58,7 @@ export function Firebase() {
       public async signInWithEmailAndPassword({
         email,
         password
-      }: IFirebaseUser) {
+      }: FirebaseUser) {
         try {
           const getUserInfo = await Fire.getConnection()
             .auth()
