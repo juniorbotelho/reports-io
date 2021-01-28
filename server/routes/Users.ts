@@ -5,7 +5,7 @@ import { UsersController } from "@App:Controllers/UsersController"
 import { UserRegisterValidation } from "@Provider:Middlewares/UserRegisterValidation"
 import { UserMultipleAccount } from "@Provider:Middlewares/UserMultipleAccount"
 import { UserEmailValidation } from "@Provider:Middlewares/UserEmailValidation"
-import { UserWebToken } from "@Provider:Middlewares/UserWebToken"
+import { GenerateWebToken } from "@Providers/middlewares/GenerateWebToken"
 import { UserLoginValidation } from "@Providers/middlewares/UserLoginValidation"
 
 // App
@@ -15,7 +15,7 @@ export const Routes = express.Router()
 Routes.get(
   "/email",
   [UserEmailValidation],
-  [UserWebToken],
+  [GenerateWebToken],
   UsersController.index
 )
 
@@ -23,7 +23,7 @@ Routes.get(
 Routes.post(
   "/signin",
   [UserLoginValidation],
-  [UserWebToken],
+  [GenerateWebToken],
   UsersController.index
 )
 
@@ -32,6 +32,5 @@ Routes.post(
   "/signup",
   [UserRegisterValidation],
   [UserMultipleAccount],
-  [UserWebToken],
   UsersController.store
 )
