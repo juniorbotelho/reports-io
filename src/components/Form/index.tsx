@@ -18,6 +18,12 @@ interface ResponseError {
   value: string
 }
 
+declare interface FormSubmitData {
+  email: string
+  username: string
+  password: string
+}
+
 // Initialize
 export const Form: React.FC<HTMLFormProps> = ({ children, ...rest }) => {
   const router = useRouter()

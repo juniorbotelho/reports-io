@@ -6,6 +6,12 @@ interface ValidationError {
   errors?: {}
 }
 
+declare interface FormSubmitData {
+  email: string
+  username: string
+  password: string
+}
+
 export class RegisterSchema {
   private schema = Yup.object().shape({
     email: Yup.string().email().required(),
