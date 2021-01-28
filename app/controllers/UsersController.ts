@@ -4,8 +4,32 @@ import { User } from "@App:Models/User"
 import { Nodemailer } from "@Providers/Nodemailer"
 import { Encrypter } from "@Providers/Encrypter"
 
+// Types
+type Request<B, Q> = import("express").Request<{}, {}, B, Q>
+type Response = import("express").Response
+
+// Interfaces
+interface BodyRequest {
+  id: string
+  firstname: string
+  lastname: string
+  email: string
+  username: string
+  password: string
+  firsthere: boolean
+  validated: boolean
+  createdAt: Date
+  updatedAt: Date
+}
+
+interface QueryRequest {
+  validation: string
+  token: string
+}
+
+// Initialize the class from here
 export class UsersController {
-  public static async index(request: User.Request, response: User.Response) {
+  public static async index(request: Request<BodyRequest, QueryRequest>, response: Response) {
     const { body, query } = request
     const { email, username, password } = body
 
@@ -46,7 +70,7 @@ export class UsersController {
     }
   }
 
-  public static async store({ body }: User.Request, response: User.Response) {
+  public static async store({ body }: Request<BodyRequest, QueryRequest>, response: Response) {
     const hashFromPassword = await bcrypt.hash(body.password, 10)
 
     try {
