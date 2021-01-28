@@ -51,7 +51,10 @@ const Validation: React.FC = () => {
 
   // Methods
   const handleSubmitAuth = () => {
-    fetch("/auth/private")
+    fetch("/auth/private", {
+      method: "POST",
+      body: JSON.stringify(data)
+    })
       .then(async (response) => {
         const fetchData = await response.json()
         console.log(fetchData)

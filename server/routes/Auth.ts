@@ -8,4 +8,4 @@ import { AuthWebToken } from "@Provider:Middlewares/AuthWebToken"
 export const Routes = express.Router()
 
 // Email
-Routes.get("/private", [AuthWebToken], AuthController.index)
+Routes.post("/private", [AuthWebToken], AuthController.index)
