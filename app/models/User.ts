@@ -26,6 +26,9 @@ export class User {
   @Column()
   password: string
 
+  @Column({ default: true })
+  firsthere: boolean
+
   @Column({ default: false })
   validated: boolean
 
