@@ -1,4 +1,4 @@
-## Checklist
+## List of tasks to solve
 - Suggestions and minor corrections
   - [ ] Update typing files into single files #22
   - [ ] Solve problem with user controller #18
