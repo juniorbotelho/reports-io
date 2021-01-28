@@ -31,14 +31,12 @@ export class Theme {
     warning: "hsl(48, 100%, 67%)",
     info: "hsl(204, 86%, 53%)",
     light: "hsl(0, 0%, 96%)",
-    dark: "hsl(0, 0%, 21%)",
-    ...this.optionals.colors
+    dark: "hsl(0, 0%, 21%)"
   }
 
   public backgrounds = {
     dark: "hsl(0, 0%, 4%)",
-    light: "hsl(0, 0%, 100%)",
-    ...this.optionals.backgrounds
+    light: "hsl(0, 0%, 100%)"
   }
 
   public shades = {

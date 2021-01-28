@@ -1,10 +1,7 @@
 import * as Yup from "yup"
 
 // Interfaces
-interface ValidationError {
-  error?: import("yup").ValidationError
-  errors?: {}
-}
+interface ValidationError extends Yup.ValidationError { }
 
 declare interface FormSubmitData {
   email: string
