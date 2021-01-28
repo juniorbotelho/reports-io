@@ -1,5 +1,11 @@
 import * as Yup from "yup"
 
+// Interfaces
+interface ValidationError {
+  error?: import("yup").ValidationError
+  errors?: {}
+}
+
 export class RegisterSchema {
   private schema = Yup.object().shape({
     email: Yup.string().email().required(),
@@ -32,7 +38,7 @@ export class RegisterSchema {
           errors: validationErrors
         }
 
-        return Promise.reject<ObjectValidationError>(instanceErrors)
+        return Promise.reject<ValidationError>(instanceErrors)
       }
     }
   }
