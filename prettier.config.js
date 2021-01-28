@@ -6,5 +6,6 @@ module.exports = {
   endOfLine: 'auto',
   proseWrap: 'preserve',
   printWidth: 80,
-  jsxBracketSameLine: true
+  jsxBracketSameLine: true,
+  prettier.bracketSpacing: false
 };
