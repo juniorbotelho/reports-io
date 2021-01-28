@@ -1,5 +1,11 @@
 import { theme } from "@Events/Theme"
 
+// Interfaces
+interface OptionalTheme {
+  colors?: { [key: string]: string }
+  backgrounds?: { [key: string]: string }
+}
+
 export class Theme {
   /**
    * Variant model which is responsible for rendering
@@ -26,13 +32,13 @@ export class Theme {
     info: "hsl(204, 86%, 53%)",
     light: "hsl(0, 0%, 96%)",
     dark: "hsl(0, 0%, 21%)",
-    ...this.optionals?.colors
+    ...this.optionals.colors
   }
 
   public backgrounds = {
     dark: "hsl(0, 0%, 4%)",
     light: "hsl(0, 0%, 100%)",
-    ...this.optionals?.backgrounds
+    ...this.optionals.backgrounds
   }
 
   public shades = {
@@ -49,7 +55,7 @@ export class Theme {
    */
   constructor(
     private ctx?: ["colors" | "backgrounds" | "shades", string, string],
-    private optionals?: IOptionalsTheme
+    private optionals?: OptionalTheme
   ) {
     if (ctx) {
       const [context, attribute, value] = this.ctx

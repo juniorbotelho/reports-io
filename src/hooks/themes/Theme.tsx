@@ -12,6 +12,11 @@ declare interface Manager {
   theme: ManagerContext
 }
 
+interface OptionalTheme {
+  colors?: { [key: string]: string }
+  backgrounds?: { [key: string]: string }
+}
+
 export const ThemeContext = createContext<ManagerContext>(null)
 
 export const ThemeProvider: React.FC<Manager> = ({ children, theme }) => {
@@ -26,7 +31,7 @@ export const ThemeProvider: React.FC<Manager> = ({ children, theme }) => {
 
 export const useManager = (
   ctx?: ["colors" | "backgrounds", string, string],
-  optionals?: IOptionalsTheme
+  optionals?: OptionalTheme
 ): ManagerContext => {
   const defaultTheme = new Theme(ctx, optionals)
 
