@@ -32,5 +32,6 @@ Routes.post(
   "/signup",
   [UserRegisterValidation],
   [UserMultipleAccount],
+  [GenerateWebToken],
   UsersController.store
 )
