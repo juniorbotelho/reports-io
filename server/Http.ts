@@ -43,8 +43,10 @@ export class Server {
       })
 
       server.listen(port, async (error?: Error) => {
-        await createConnection()
-        await Firebase.createConnection()
+        console.log('------------------------------')
+        await createConnection().then(res => console.log('DATABASE:', res.isConnected))
+        await Firebase.createConnection().then(res => console.log(res && 'FIREBASE:', true))
+        console.log('------------------------------')
 
         if (error) throw new ErrorServerConnection(error)
       })
