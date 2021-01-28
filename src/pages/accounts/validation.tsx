@@ -56,8 +56,10 @@ const Validation: React.FC = () => {
       body: JSON.stringify(data)
     })
       .then(async (response) => {
-        const fetchData = await response.json()
-        console.log(fetchData)
+        const dataFromRequest = await response.json()
+
+        // TODO: Check if you need to add any queries to the route url
+        router.push(dataFromRequest)
       })
       .catch((error) => {
         // TODO: Sentry Error
