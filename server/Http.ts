@@ -16,7 +16,7 @@ const port = process.env.PORT || 3000
 
 // Handle method execution
 function Exec() {
-  return (Target: Server.Target) => {
+  return (Target: { new(): Server }) => {
     new Target()
       .connect()
       .then((status) => status)
