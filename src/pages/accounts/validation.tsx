@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { useRouter } from "next/router"
 import Lottie from "react-lottie"
+import Head from "next/head"
 
 import { Section } from "@Style:Components/Section"
 import { Div } from "@Style:Components/Div"
@@ -63,6 +64,10 @@ const Validation: React.FC = () => {
 
   return (
     <>
+      <Head>
+        <title>Reports.io | Account Validation</title>
+      </Head>
+
       {load && (
         <Section className="Section_Loading">
           <Lottie
